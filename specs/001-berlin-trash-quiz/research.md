@@ -45,3 +45,13 @@
 - **Alternatives considered**:
   - Adding a backend later-first design: rejected because it would reintroduce unnecessary runtime
     assumptions into the MVP.
+
+## Decision 6: Use the supplied design system and reference quiz layout as implementation targets
+- **Decision**: Treat the Urban Alchemist design system and the supplied quiz mock/reference as hard
+  UX constraints, not optional polish.
+- **Rationale**: The product is meant to feel premium, editorial, and game-like rather than civic
+  or utilitarian. The reference gives concrete structure for the main quiz screen.
+- **Alternatives considered**:
+  - Generic utility-first quiz layout: rejected because it would miss the intended brand feel.
+  - Retrofitting visual identity after implementation: rejected because layout, spacing, and answer
+    card behavior are core to the experience.

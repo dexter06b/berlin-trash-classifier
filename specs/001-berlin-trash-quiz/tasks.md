@@ -28,6 +28,8 @@ of each story.
 - [ ] T002 Configure GitHub Pages publishing and static hosting documentation in `README.md` and
       `.github/workflows/` if needed
 - [ ] T003 [P] Add local static-server setup instructions and project overview in `README.md`
+- [ ] T004 [P] Implement design tokens and typography setup from the Urban Alchemist system in
+      `assets/css/tokens.css` and `assets/css/base.css`
 
 ---
 
@@ -35,14 +37,14 @@ of each story.
 
 **Purpose**: Core infrastructure that MUST be complete before ANY user story can be implemented
 
-- [ ] T004 Create static content schema for disposal outcomes, disposal items, and rule notes in
+- [ ] T005 Create static content schema for disposal outcomes, disposal items, and rule notes in
       `assets/data/disposal-items.json`
-- [ ] T005 [P] Seed at least 20 curated Berlin disposal examples in `assets/data/disposal-items.json`
-- [ ] T006 [P] Implement browser storage utilities for quiz/progress state in
+- [ ] T006 [P] Seed at least 20 curated Berlin disposal examples in `assets/data/disposal-items.json`
+- [ ] T007 [P] Implement browser storage utilities for quiz/progress state in
       `assets/js/storage.js`
-- [ ] T007 Define shared navigation, layout shell, and base styling for landing, quiz, and cards
-      pages in `index.html`, `cards/`, and `assets/css/`
-- [ ] T008 Add lightweight test fixtures or quiz-logic harness in `tests/`
+- [ ] T008 Define shared navigation, layout shell, and base styling for landing, quiz, and cards
+      pages in `index.html`, `cards/`, `assets/css/components.css`, and `assets/css/pages.css`
+- [ ] T009 Add lightweight test fixtures or quiz-logic harness in `tests/`
 
 **Checkpoint**: Foundation ready - user story implementation can now begin in parallel
 
@@ -57,21 +59,26 @@ answer, and finish the round with a score on mobile.
 
 ### Tests for User Story 1
 
-- [ ] T009 [P] [US1] Add browser test or harness for starting and completing a quiz round in
+- [ ] T010 [P] [US1] Add browser test or harness for starting and completing a quiz round in
       `tests/quiz-round/`
-- [ ] T010 [P] [US1] Add automated coverage for answer evaluation and feedback rendering in
+- [ ] T011 [P] [US1] Add automated coverage for answer evaluation and feedback rendering in
       `tests/quiz-logic/`
 
 ### Implementation for User Story 1
 
-- [ ] T011 [P] [US1] Implement quiz question selection and answer evaluation logic in
+- [ ] T012 [P] [US1] Implement quiz question selection and answer evaluation logic in
       `assets/js/quiz.js`
-- [ ] T012 [US1] Implement quiz page flow and state transitions in `index.html` and
+- [ ] T013 [US1] Implement quiz page flow and state transitions in `index.html` and
       `assets/js/app.js`
-- [ ] T013 [P] [US1] Build quiz UI with mobile-friendly answer cards, progress bar, and score UI in
-      `index.html` and `assets/css/`
-- [ ] T014 [US1] Add explanation rendering for nuanced Berlin disposal cases in
+- [ ] T014 [P] [US1] Build the reference-inspired quiz layout with centered question, large rounded
+      image card, thick progress bar, floating points pill, and 2×2 answer grid in `index.html`,
+      `assets/css/components.css`, and `assets/css/pages.css`
+- [ ] T015 [US1] Style answer cards as colorful category tiles matching the reference and design
+      system in `assets/css/components.css`
+- [ ] T016 [US1] Add explanation rendering for nuanced Berlin disposal cases in
       `assets/js/quiz.js` and the quiz UI templates
+- [ ] T017 [P] [US1] Implement glassmorphism feedback/points overlays and editorial spacing polish
+      in `assets/css/components.css` and `assets/css/pages.css`
 
 **Checkpoint**: User Story 1 is fully functional and independently testable
 
@@ -87,15 +94,16 @@ Berlin disposal outcome without entering the quiz.
 
 ### Tests for User Story 2
 
-- [ ] T015 [P] [US2] Add lightweight browser coverage for card browsing and item detail views in
+- [ ] T018 [P] [US2] Add lightweight browser coverage for card browsing and item detail views in
       `tests/cards/`
 
 ### Implementation for User Story 2
 
-- [ ] T016 [US2] Implement cards listing and item detail rendering in `cards/index.html`,
+- [ ] T019 [US2] Implement cards listing and item detail rendering in `cards/index.html`,
       `cards/item.html`, and `assets/js/cards.js`
-- [ ] T017 [P] [US2] Build cards index and detail styling in `assets/css/`
-- [ ] T018 [US2] Add reusable rendering helpers for disposal outcome badges and nuance notes in
+- [ ] T020 [P] [US2] Build cards index and detail styling with the same tonal-layering design
+      language in `assets/css/components.css` and `assets/css/pages.css`
+- [ ] T021 [US2] Add reusable rendering helpers for disposal outcome badges and nuance notes in
       `assets/js/cards.js`
 
 **Checkpoint**: User Stories 1 and 2 both work independently
@@ -111,16 +119,16 @@ progress or score information.
 
 ### Tests for User Story 3
 
-- [ ] T019 [P] [US3] Add automated coverage for progress persistence and restoration in
+- [ ] T022 [P] [US3] Add automated coverage for progress persistence and restoration in
       `tests/storage/`
 
 ### Implementation for User Story 3
 
-- [ ] T020 [US3] Implement cookie/localStorage-backed learning progress utilities in
+- [ ] T023 [US3] Implement cookie/localStorage-backed learning progress utilities in
       `assets/js/storage.js`
-- [ ] T021 [US3] Surface saved progress summary on landing and quiz views in `index.html` and
+- [ ] T024 [US3] Surface saved progress summary on landing and quiz views in `index.html` and
       `assets/js/app.js`
-- [ ] T022 [US3] Add reset/fresh-start handling for missing or cleared progress in
+- [ ] T025 [US3] Add reset/fresh-start handling for missing or cleared progress in
       `assets/js/app.js` and `assets/js/storage.js`
 
 **Checkpoint**: All user stories are independently functional
@@ -131,11 +139,11 @@ progress or score information.
 
 **Purpose**: Improvements that affect multiple user stories
 
-- [ ] T023 [P] Review and refine English copy for Berlin expat clarity in `index.html`, `cards/`,
+- [ ] T026 [P] Review and refine English copy for Berlin expat clarity in `index.html`, `cards/`,
       and `assets/data/disposal-items.json`
-- [ ] T024 Run responsive/mobile QA fixes across quiz and cards screens in `assets/css/` and HTML
+- [ ] T027 Run responsive/mobile QA fixes across quiz and cards screens in `assets/css/` and HTML
       files
-- [ ] T025 Validate Berlin disposal guidance sources and capture notes in
+- [ ] T028 Validate Berlin disposal guidance sources and capture notes in
       `specs/001-berlin-trash-quiz/research.md` and `assets/data/disposal-items.json`
 
 ---
@@ -162,11 +170,11 @@ progress or score information.
 
 ### Parallel Opportunities
 
-- T002 and T003 can proceed alongside early setup work
-- T005, T006, and T008 can proceed in parallel after the data/content shape is agreed
-- T009 and T010 can be written in parallel for User Story 1
-- T013 and T014 can proceed in parallel once quiz logic contracts are set
-- T015 and T017 can proceed in parallel for the cards flow
+- T002, T003, and T004 can proceed alongside early setup work
+- T006, T007, and T009 can proceed in parallel after the data/content shape is agreed
+- T010 and T011 can be written in parallel for User Story 1
+- T014 and T015 can proceed in parallel once quiz logic contracts are set
+- T018 and T020 can proceed in parallel for the cards flow
 
 ## Implementation Strategy
 
@@ -175,7 +183,7 @@ progress or score information.
 1. Complete Setup
 2. Complete Foundational phase
 3. Complete User Story 1
-4. Validate the quiz loop on mobile
+4. Validate the quiz loop on mobile against the supplied reference
 5. Publish the MVP slice to GitHub Pages
 
 ### Incremental Delivery
