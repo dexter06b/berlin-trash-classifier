@@ -183,3 +183,22 @@ h2 {
   display: grid;
   gap: var(--space-4);
 }
+
+.feedback-panel {
+  display: grid;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+  background: var(--glass-surface);
+  backdrop-filter: blur(18px);
+  box-shadow: var(--shadow-ambient);
+}
+
+.feedback-panel--correct {
+  background: rgba(217, 235, 200, 0.9);
+}
+
+.feedback-panel--wrong {
+  background: rgba(255, 230, 168, 0.9);
+}
