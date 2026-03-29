@@ -61,6 +61,7 @@ function renderCardsIndex(catalog) {
 
       return `
         <article class="mini-card surface-panel">
+
           <div class="mini-card__visual" aria-hidden="true">${escapeHtml(getItemEmoji(item))}</div>
           <span class="badge ${badgeClass}">${escapeHtml(outcome?.label_en || "Unknown")}</span>
           <h2>${escapeHtml(item.name_en)}</h2>
@@ -97,6 +98,7 @@ function renderCardDetail(catalog) {
     : "";
 
   container.innerHTML = `
+
     <div class="detail-visual" aria-hidden="true">${escapeHtml(getItemEmoji(item))}</div>
     <span class="badge ${badgeClass}">${escapeHtml(outcome?.label_en || "Unknown")}</span>
     <h1>${escapeHtml(item.name_en)}</h1>
