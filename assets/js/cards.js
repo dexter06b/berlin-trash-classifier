@@ -8,6 +8,33 @@ const BADGE_CLASS_BY_OUTCOME = {
   special: "badge--special"
 };
 
+const ITEM_EMOJI_BY_SLUG = {
+  "greasy-pizza-box": "🍕",
+  "clean-cardboard-box": "📦",
+  newspaper: "📰",
+  "paper-egg-carton": "🥚",
+  "receipt-paper": "🧾",
+  "yogurt-cup": "🥛",
+  "plastic-bottle-no-deposit": "🧴",
+  "tin-can": "🥫",
+  "aluminum-foil-clean": "✨",
+  "drink-carton": "🧃",
+  "banana-peel": "🍌",
+  "coffee-grounds": "☕",
+  "tea-bag": "🫖",
+  "cut-flowers": "💐",
+  "bread-roll": "🥖",
+  "broken-ceramic-mug": "☕",
+  "vacuum-dust": "🧹",
+  "used-tissue": "🤧",
+  "cold-ash": "🔥",
+  "glass-bottle-deposit": "🍾",
+  battery: "🔋",
+  "light-bulb-led": "💡",
+  "paint-can-with-residue": "🎨",
+  "electronics-cable": "🔌"
+};
+
 function escapeHtml(value) {
   return String(value)
     .replaceAll("&", "&amp;")
@@ -15,6 +42,10 @@ function escapeHtml(value) {
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#39;");
+}
+
+function getItemEmoji(item) {
+  return ITEM_EMOJI_BY_SLUG[item.slug] || "🗑️";
 }
 
 function renderCardsIndex(catalog) {
@@ -30,6 +61,7 @@ function renderCardsIndex(catalog) {
 
       return `
         <article class="mini-card surface-panel">
+          <div class="mini-card__visual" aria-hidden="true">${escapeHtml(getItemEmoji(item))}</div>
           <span class="badge ${badgeClass}">${escapeHtml(outcome?.label_en || "Unknown")}</span>
           <h2>${escapeHtml(item.name_en)}</h2>
           <p>${escapeHtml(item.explanation_en)}</p>
@@ -65,6 +97,7 @@ function renderCardDetail(catalog) {
     : "";
 
   container.innerHTML = `
+    <div class="detail-visual" aria-hidden="true">${escapeHtml(getItemEmoji(item))}</div>
     <span class="badge ${badgeClass}">${escapeHtml(outcome?.label_en || "Unknown")}</span>
     <h1>${escapeHtml(item.name_en)}</h1>
     <p class="lead">${escapeHtml(item.explanation_en)}</p>
