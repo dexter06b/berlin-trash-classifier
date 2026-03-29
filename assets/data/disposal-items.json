@@ -4,30 +4,35 @@
     {
       "key": "paper",
       "label_en": "Paper",
+      "label_de": "Blaue Tonne",
       "short_description_en": "Clean paper and cardboard recycling.",
       "special_handling": false
     },
     {
       "key": "packaging",
       "label_en": "Packaging",
+      "label_de": "Wertstofftonne",
       "short_description_en": "Light packaging such as plastic, metal, and composites.",
       "special_handling": false
     },
     {
       "key": "bio",
       "label_en": "Bio",
+      "label_de": "Biomüll",
       "short_description_en": "Food scraps and compostable organic waste where accepted.",
       "special_handling": false
     },
     {
       "key": "residual",
       "label_en": "Residual",
+      "label_de": "Restmüll",
       "short_description_en": "General household waste that does not fit the recycling streams.",
       "special_handling": false
     },
     {
       "key": "special",
       "label_en": "Special disposal",
+      "label_de": "Sondermüll / Sammelstelle",
       "short_description_en": "Items that require collection points, return systems, or hazardous waste disposal.",
       "special_handling": true
     }

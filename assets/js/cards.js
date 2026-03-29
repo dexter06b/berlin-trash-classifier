@@ -17,6 +17,11 @@ function escapeHtml(value) {
     .replaceAll("'", "&#39;");
 }
 
+function formatOutcomeLabel(outcome) {
+  if (!outcome) return "Unknown";
+  return outcome.label_de ? `${outcome.label_en} (${outcome.label_de})` : outcome.label_en;
+}
+
 function renderCardsIndex(catalog) {
   const container = document.querySelector("#cards-grid");
   if (!container) return;
@@ -30,7 +35,7 @@ function renderCardsIndex(catalog) {
 
       return `
         <article class="mini-card surface-panel">
-          <span class="badge ${badgeClass}">${escapeHtml(outcome?.label_en || "Unknown")}</span>
+          <span class="badge ${badgeClass}">${escapeHtml(formatOutcomeLabel(outcome))}</span>
           <h2>${escapeHtml(item.name_en)}</h2>
           <p>${escapeHtml(item.explanation_en)}</p>
           <a class="button button--tertiary" href="item.html?slug=${encodeURIComponent(item.slug)}">Open card</a>
@@ -65,7 +70,7 @@ function renderCardDetail(catalog) {
     : "";
 
   container.innerHTML = `
-    <span class="badge ${badgeClass}">${escapeHtml(outcome?.label_en || "Unknown")}</span>
+    <span class="badge ${badgeClass}">${escapeHtml(formatOutcomeLabel(outcome))}</span>
     <h1>${escapeHtml(item.name_en)}</h1>
     <p class="lead">${escapeHtml(item.explanation_en)}</p>
     <div class="detail-note surface-panel surface-panel--nested">

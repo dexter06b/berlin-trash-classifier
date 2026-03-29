@@ -16,33 +16,6 @@ const ANSWER_TILE_CLASS = {
   residual: "answer-tile--residual"
 };
 
-const ITEM_EMOJI_BY_SLUG = {
-  "greasy-pizza-box": "🍕",
-  "clean-cardboard-box": "📦",
-  newspaper: "📰",
-  "paper-egg-carton": "🥚",
-  "receipt-paper": "🧾",
-  "yogurt-cup": "🥛",
-  "plastic-bottle-no-deposit": "🧴",
-  "tin-can": "🥫",
-  "aluminum-foil-clean": "✨",
-  "drink-carton": "🧃",
-  "banana-peel": "🍌",
-  "coffee-grounds": "☕",
-  "tea-bag": "🫖",
-  "cut-flowers": "💐",
-  "bread-roll": "🥖",
-  "broken-ceramic-mug": "☕",
-  "vacuum-dust": "🧹",
-  "used-tissue": "🤧",
-  "cold-ash": "🔥",
-  "glass-bottle-deposit": "🍾",
-  battery: "🔋",
-  "light-bulb-led": "💡",
-  "paint-can-with-residue": "🎨",
-  "electronics-cable": "🔌"
-};
-
 function escapeHtml(value) {
   return String(value)
     .replaceAll("&", "&amp;")
@@ -56,8 +29,9 @@ function getOutcomeBadgeClass(outcomeKey) {
   return ANSWER_TILE_CLASS[outcomeKey]?.replace("answer-tile", "badge") || "badge--residual";
 }
 
-function getItemEmoji(item) {
-  return ITEM_EMOJI_BY_SLUG[item.slug] || "🗑️";
+function formatOutcomeLabel(outcome) {
+  if (!outcome) return "Unknown";
+  return outcome.label_de ? `${outcome.label_en} (${outcome.label_de})` : outcome.label_en;
 }
 
 function updateSummary(state) {
@@ -70,7 +44,6 @@ function renderCompleteState(state) {
   document.querySelector("#round-label").textContent = "Round complete";
   document.querySelector("#progress-fill").style.width = "100%";
   document.querySelector("#quiz-title").textContent = `Round complete — ${state.roundCorrect}/${state.items.length}`;
-  document.querySelector("#item-emoji").textContent = "🏁";
   document.querySelector("#item-caption").textContent = "Nice. You can replay by refreshing or move on to the next issue.";
   document.querySelector("#item-hint").textContent = "You just completed the current learning round.";
   document.querySelector("#answer-grid").innerHTML = '<a class="button button--primary" href="#quiz-preview">Great job</a>';
@@ -95,7 +68,6 @@ function renderQuestion(state, catalog) {
   document.querySelector("#round-label").textContent = state.answered ? "Answer reviewed" : `${Math.round(getProgressPercent(state))}% complete`;
   document.querySelector("#progress-fill").style.width = `${getProgressPercent(state)}%`;
   document.querySelector("#quiz-title").textContent = item.question_prompt_en;
-  document.querySelector("#item-emoji").textContent = getItemEmoji(item);
   document.querySelector("#item-caption").textContent = item.name_en;
   document.querySelector("#item-hint").textContent = item.source_note || "Choose the best Berlin disposal path.";
   updateSummary(state);
@@ -109,7 +81,7 @@ function renderQuestion(state, catalog) {
       .map(
         (option) => `
           <button class="answer-tile ${ANSWER_TILE_CLASS[option.key] ?? ""}" type="button" data-outcome-key="${option.key}">
-            <span class="answer-tile__label">${escapeHtml(option.label_en)}</span>
+            <span class="answer-tile__label">${escapeHtml(formatOutcomeLabel(option))}</span>
             <span class="answer-tile__hint">${escapeHtml(option.short_description_en)}</span>
           </button>
         `
@@ -144,7 +116,7 @@ function renderQuestion(state, catalog) {
   feedbackPanel.innerHTML = `
     <strong>${correct ? "Correct!" : "Not quite"}</strong>
     <p>${escapeHtml(item.explanation_en)}</p>
-    <p><span class="badge ${getOutcomeBadgeClass(item.primary_outcome)}">${escapeHtml(outcome?.label_en || item.primary_outcome)}</span></p>
+    <p><span class="badge ${getOutcomeBadgeClass(item.primary_outcome)}">${escapeHtml(formatOutcomeLabel(outcome))}</span></p>
   `;
 }
 
