@@ -162,10 +162,15 @@ h2 {
   color: var(--color-on-surface);
 }
 
-.answer-tile--paper { background: var(--color-paper); }
-.answer-tile--packaging { background: var(--color-packaging); }
-.answer-tile--bio { background: var(--color-bio); }
-.answer-tile--residual { background: var(--color-residual); }
+.answer-tile--paper,
+.badge--paper { background: var(--color-paper); }
+.answer-tile--packaging,
+.badge--packaging { background: var(--color-packaging); }
+.answer-tile--bio,
+.badge--bio { background: var(--color-bio); }
+.answer-tile--residual,
+.badge--residual { background: var(--color-residual); }
+.badge--special { background: var(--color-tertiary-container); }
 
 .badge {
   width: fit-content;
@@ -174,7 +179,7 @@ h2 {
   font-weight: 700;
 }
 
-.badge--paper { background: var(--color-paper); }
-.badge--packaging { background: var(--color-packaging); }
-.badge--bio { background: var(--color-bio); }
-.badge--residual { background: var(--color-residual); }
+.notes-stack {
+  display: grid;
+  gap: var(--space-4);
+}

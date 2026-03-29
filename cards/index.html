@@ -15,36 +15,24 @@
     <link rel="stylesheet" href="../assets/css/components.css" />
     <link rel="stylesheet" href="../assets/css/pages.css" />
   </head>
-  <body>
+  <body data-page="cards-index">
     <div class="page-shell page-shell--cards">
       <header class="topbar">
         <a class="icon-button" href="../index.html" aria-label="Back to home">←</a>
         <span class="topbar-title">Cards</span>
-        <span class="score-pill score-pill--ghost">Preview</span>
+        <span class="score-pill score-pill--ghost">Browse mode</span>
       </header>
 
       <main class="cards-layout">
         <section class="surface-panel surface-panel--soft">
           <p class="eyebrow">Reference mode</p>
           <h1>Browse disposal cards</h1>
-          <p class="lead">This is the future browse-first companion view for the quiz experience.</p>
+          <p class="lead">
+            Explore common Berlin disposal cases in plain English before or after taking a quiz.
+          </p>
         </section>
 
-        <section class="cards-grid">
-          <article class="mini-card surface-panel">
-            <span class="badge badge--paper">Paper</span>
-            <h2>Pizza box</h2>
-            <p>Check contamination first before choosing the correct disposal path.</p>
-            <a class="button button--tertiary" href="item.html">Open card</a>
-          </article>
-
-          <article class="mini-card surface-panel">
-            <span class="badge badge--packaging">Packaging</span>
-            <h2>Yogurt cup</h2>
-            <p>Packaging items will later be backed by the curated static data file.</p>
-            <a class="button button--tertiary" href="item.html">Open card</a>
-          </article>
-        </section>
+        <section id="cards-grid" class="cards-grid" aria-live="polite"></section>
       </main>
     </div>
 
