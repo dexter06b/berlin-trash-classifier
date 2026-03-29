@@ -20,52 +20,56 @@
     <link rel="stylesheet" href="assets/css/pages.css" />
   </head>
   <body>
-    <div class="page-shell page-shell--home">
-      <header class="topbar topbar--home">
-        <span class="eyebrow">The Urban Alchemist</span>
-        <span id="progress-summary" class="score-pill score-pill--ghost">No account needed</span>
+    <div class="page-shell page-shell--quiz">
+      <header class="quiz-topbar">
+        <a class="icon-button" href="./" aria-label="Refresh quiz">←</a>
+        <div class="quiz-branding">
+          <span class="eyebrow">Berlin Sortiert</span>
+          <span class="topbar-title">Quiz mode</span>
+        </div>
+        <span id="score-pill" class="score-pill">+0 pts</span>
       </header>
 
-      <main class="hero hero--home">
-        <section class="hero-copy surface-panel surface-panel--soft">
-          <p class="eyebrow">Berlin trash guide</p>
-          <h1>Sort waste like a local.</h1>
-          <p class="lead">
-            A premium, quiz-first learning experience for Berlin expats who want to understand paper,
-            packaging, bio waste, residual waste, and the tricky edge cases in between.
-          </p>
-          <div class="hero-actions">
-            <a class="button button--primary" href="#quiz-preview">Start quiz</a>
-            <a class="button button--secondary" href="cards/index.html">Browse cards</a>
-          </div>
-        </section>
-
-        <section id="quiz-preview" class="quiz-preview surface-panel">
-          <div class="quiz-chrome">
-            <a class="icon-button" href="./" aria-label="Go back">←</a>
-            <span class="topbar-title">TrashQuiz</span>
-            <span id="score-pill" class="score-pill">+0 pts</span>
-          </div>
-
-          <div class="progress-meta">
-            <span id="question-counter">1 / 5</span>
-            <span id="round-label">Warm-up round</span>
-          </div>
-          <div class="progress-track" aria-hidden="true">
-            <div id="progress-fill" class="progress-fill" style="width: 20%"></div>
-          </div>
-
-          <h2 id="quiz-title" class="quiz-title">Where should this go?</h2>
-
-          <div class="item-stage">
-            <div class="item-card">
-              <div class="item-emoji" aria-hidden="true">🗑️</div>
-              <p id="item-caption" class="item-caption">Loading quiz item…</p>
+      <main class="quiz-layout">
+        <section id="quiz-preview" class="quiz-preview surface-panel surface-panel--quiz">
+          <div class="quiz-progress-shell">
+            <div class="progress-meta progress-meta--quiz">
+              <span id="question-counter">1 / 5</span>
+              <span id="round-label">Warm-up round</span>
+            </div>
+            <div class="progress-track" aria-hidden="true">
+              <div id="progress-fill" class="progress-fill" style="width: 20%"></div>
             </div>
           </div>
 
-          <div id="answer-grid" class="answer-grid"></div>
+          <div class="quiz-headline-block">
+            <span id="progress-summary" class="score-pill score-pill--ghost">No account needed</span>
+            <h1 id="quiz-title" class="quiz-title">Where should this go?</h1>
+          </div>
+
+          <div class="item-stage item-stage--hero">
+            <div class="item-card item-card--hero">
+              <div id="item-emoji" class="item-emoji" aria-hidden="true">🗑️</div>
+              <p id="item-caption" class="item-caption">Loading quiz item…</p>
+              <p id="item-hint" class="item-hint">Think like a Berlin local.</p>
+            </div>
+          </div>
+
+          <div id="answer-grid" class="answer-grid answer-grid--quiz"></div>
           <div id="feedback-panel" class="feedback-panel" hidden></div>
+        </section>
+
+        <section class="quiz-support surface-panel surface-panel--soft">
+          <p class="eyebrow">Urban Alchemist</p>
+          <h2>Learn the logic, not just the bin color.</h2>
+          <p class="lead">
+            This quiz is built for Berlin expats. Short explanations and tricky examples help you
+            understand why an item belongs in paper, packaging, bio, residual waste, or a special
+            collection path.
+          </p>
+          <div class="hero-actions">
+            <a class="button button--secondary" href="cards/index.html">Browse cards</a>
+          </div>
         </section>
       </main>
     </div>
