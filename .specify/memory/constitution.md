@@ -1,10 +1,10 @@
 <!--
 Sync Impact Report
-- Version change: 0.0.0 → 1.0.0
-- Modified principles: template placeholders → Product Clarity First; Simplicity Over Cleverness; Testable Learning Loops; Berlin Rule Fidelity; Deployability by Default
-- Added sections: Product Constraints; Delivery Workflow
+- Version change: 1.0.0 → 1.1.0
+- Modified principles: Deployability by Default → Static Deployability by Default
+- Added sections: none
 - Removed sections: none
-- Templates requiring updates: ✅ reviewed .specify/templates/plan-template.md; ✅ reviewed .specify/templates/spec-template.md; ✅ reviewed .specify/templates/tasks-template.md; ✅ reviewed command files via installed skills path; ⚠ no further template edits required for this project at v1
+- Templates requiring updates: ✅ planning artifacts updated in specs/001-berlin-trash-quiz/; ⚠ generic spec-kit templates left unchanged because this amendment is project-specific
 - Follow-up TODOs: none
 -->
 
@@ -19,10 +19,9 @@ feature is clever but does not improve understanding of where an item belongs, i
 belong in the MVP.
 
 ### II. Simplicity Over Cleverness
-The product MUST stay lightweight, easy to maintain, and easy to deploy. Prefer standard Ruby on
-Rails patterns, SQLite where persistence is actually needed, and cookie-based state for simple
-progress tracking. New dependencies or architectural layers MUST be justified by a concrete user
-need.
+The product MUST stay lightweight, easy to maintain, and easy to deploy. Prefer plain HTML, CSS,
+and JavaScript with static hosting patterns, and use browser-side storage for simple progress
+tracking. New dependencies, frameworks, or build layers MUST be justified by a concrete user need.
 
 ### III. Testable Learning Loops
 Core user journeys MUST be independently testable end to end. The primary learning loop—see an
@@ -35,10 +34,10 @@ When rules vary by contamination level, material type, or collection method, the
 surface that nuance in plain English. Unverified or uncertain disposal advice MUST not be shipped
 as factual.
 
-### V. Deployability by Default
-Planning and implementation MUST preserve a straightforward deployment path with Kamal. The app
-MUST remain operable as a small Rails web app without accounts, background complexity, or fragile
-infrastructure assumptions in the MVP.
+### V. Static Deployability by Default
+Planning and implementation MUST preserve a straightforward deployment path with GitHub Pages. The
+app MUST remain operable as a small static web app without accounts, server dependencies, or
+fragile infrastructure assumptions in the MVP.
 
 ## Product Constraints
 
@@ -52,8 +51,8 @@ infrastructure assumptions in the MVP.
 
 - Specifications MUST describe the user problem, learning outcomes, and scope boundaries before
   implementation details.
-- Plans MUST document Rails, SQLite/cookies, and Kamal decisions explicitly, including what is
-  intentionally deferred.
+- Plans MUST document static hosting, plain JavaScript, and browser storage decisions explicitly,
+  including what is intentionally deferred.
 - Tasks MUST be organized into independently testable user stories, with the quiz loop treated as
   the first MVP slice.
 - Any content-heavy issue MUST identify its disposal-rule source or validation approach before
@@ -66,4 +65,4 @@ related planning artifacts, and a semantic version bump according to impact: MAJ
 principle changes, MINOR for new or expanded guidance, PATCH for wording-only clarifications.
 Compliance checks are required during planning and before major scope expansion.
 
-**Version**: 1.0.0 | **Ratified**: 2026-03-29 | **Last Amended**: 2026-03-29
+**Version**: 1.1.0 | **Ratified**: 2026-03-29 | **Last Amended**: 2026-03-29

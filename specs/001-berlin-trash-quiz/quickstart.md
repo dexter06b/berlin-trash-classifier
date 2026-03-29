@@ -1,19 +1,18 @@
 # Quickstart: Berlin Trash Quiz
 
 ## Goal
-Run the Rails app locally, load curated disposal content, and verify the MVP quiz loop and learning
-cards flow.
+Run the static site locally, load curated disposal content, and verify the MVP quiz loop and
+learning cards flow.
 
 ## Prerequisites
-- Ruby and Rails installed locally
-- SQLite available
-- Bundler available
+- A modern browser
+- A simple static file server for local testing (for example Python’s built-in HTTP server)
 
 ## Setup
-1. Install dependencies with `bundle install`.
-2. Prepare the database with `bin/rails db:prepare`.
-3. Load curated disposal content through seeds or a structured import task.
-4. Start the app with `bin/dev` or `bin/rails server`.
+1. Serve the repository locally from the project root using a static file server.
+2. Open the local site in a browser.
+3. Confirm the disposal content file loads correctly.
+4. Exercise the quiz and cards flows.
 
 ## Manual Verification
 
@@ -32,10 +31,10 @@ cards flow.
 
 ### Returning progress
 1. Complete at least one quiz round.
-2. Refresh or revisit the app on the same device.
+2. Refresh or revisit the app on the same browser.
 3. Confirm lightweight progress or score data is still visible without signing in.
 
 ## Deployment Readiness
-- Confirm app configuration stays compatible with Kamal deployment.
-- Confirm no account-related infrastructure is required for the MVP.
-- Confirm content updates can be delivered through app-managed data.
+- Confirm the site works when hosted as static files on GitHub Pages.
+- Confirm no account-related or server-side infrastructure is required for the MVP.
+- Confirm content updates can be delivered by editing static data files.

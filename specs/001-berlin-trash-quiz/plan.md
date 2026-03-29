@@ -5,24 +5,26 @@
 
 ## Summary
 
-Build a small Rails web app for English-speaking Berlin expats to learn proper trash classification
-through a quiz-first experience with supporting item cards. Use conventional Rails structure,
-mobile-friendly server-rendered UI, lightweight local progress persistence, curated Berlin-specific
-content, and a straightforward Kamal deployment path.
+Build a small static web app for English-speaking Berlin expats to learn proper trash classification
+through a quiz-first experience with supporting item cards. Use plain HTML, CSS, and JavaScript,
+deploy with GitHub Pages, keep content in static data files, and store lightweight progress in the
+browser.
 
 ## Technical Context
 
-**Language/Version**: Ruby 3.x, Ruby on Rails 8.x  
-**Primary Dependencies**: Ruby on Rails, Hotwire (Turbo/Stimulus), Kamal  
-**Storage**: SQLite for curated content and optional lightweight persisted stats; cookies/session
-for device-local quiz progress  
-**Testing**: Rails built-in test framework with system/integration tests  
-**Target Platform**: Modern mobile and desktop browsers  
-**Project Type**: Rails web application  
-**Performance Goals**: First interactive quiz screen visible quickly on a modest mobile connection;
-question transitions feel immediate for a small content set  
-**Constraints**: English only for MVP, no accounts, mobile-friendly, easy content updates, simple
-single-app deployment with Kamal  
+**Language/Version**: HTML5, CSS3, vanilla JavaScript (ES modules)  
+**Primary Dependencies**: No required frontend framework; optional lightweight test tooling only if
+needed during implementation  
+**Storage**: Static JSON or JavaScript data files for curated content; cookies or localStorage for
+browser-side progress  
+**Testing**: Browser-based manual verification plus lightweight automated tests for quiz logic and
+UI flows  
+**Target Platform**: Modern mobile and desktop browsers served as a static site on GitHub Pages  
+**Project Type**: Static web application  
+**Performance Goals**: Fast first load on mobile, instant answer feedback, and smooth card/quiz
+transitions without a build-heavy stack  
+**Constraints**: English only for MVP, no accounts, mobile-friendly, easy content updates, must be
+hostable on GitHub Pages without server code  
 **Scale/Scope**: Initial MVP with at least 20 curated disposal items, 4–6 main disposal outcomes,
 and one quiz-centered product flow
 
@@ -30,13 +32,13 @@ and one quiz-centered product flow
 
 - **Product Clarity First**: Pass — plan centers on a quiz loop and explanatory content for Berlin
   expats.
-- **Simplicity Over Cleverness**: Pass — conventional Rails app, no accounts, no unnecessary
-  services.
-- **Testable Learning Loops**: Pass — system tests will target the quiz loop and card browsing.
+- **Simplicity Over Cleverness**: Pass — plain HTML/CSS/JS, no accounts, no framework or backend
+  dependency.
+- **Testable Learning Loops**: Pass — quiz logic and primary UI flows remain independently testable.
 - **Berlin Rule Fidelity**: Pass with validation requirement — content source review is needed for
   disposal guidance before release.
-- **Deployability by Default**: Pass — Kamal-compatible single Rails app with low infrastructure
-  complexity.
+- **Static Deployability by Default**: Pass — GitHub Pages-compatible static app with no server-side
+  runtime.
 
 ## Project Structure
 
@@ -56,27 +58,29 @@ specs/001-berlin-trash-quiz/
 ### Source Code (repository root)
 
 ```text
-app/
-├── controllers/
-├── models/
-├── views/
-├── javascript/controllers/
-└── helpers/
+index.html
+cards/
+├── index.html
+└── item.html
 
-config/
-db/
-test/
-├── models/
-├── system/
-└── integration/
+assets/
+├── css/
+├── js/
+│   ├── app.js
+│   ├── quiz.js
+│   ├── cards.js
+│   ├── storage.js
+│   └── data-loader.js
+└── data/
+    └── disposal-items.json
 
-data/
-└── disposal_items.yml
+tests/
+└── quiz-logic/
 ```
 
-**Structure Decision**: Use a single Rails application with server-rendered views and small
-Hotwire enhancements. Keep curated content close to the app so disposal rules are easy to review
-and update.
+**Structure Decision**: Use a static multi-page or lightweight single-page structure with plain
+JavaScript modules. Keep curated content close to the site as static data so disposal rules are
+easy to review, update, and publish through GitHub Pages.
 
 ## Complexity Tracking
 

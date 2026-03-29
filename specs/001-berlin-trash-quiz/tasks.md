@@ -3,8 +3,8 @@
 **Input**: Design documents from `/specs/001-berlin-trash-quiz/`  
 **Prerequisites**: plan.md, spec.md, research.md, data-model.md, contracts/
 
-**Tests**: Include system and integration tests for the MVP quiz loop because the constitution
-requires independently testable learning flows.
+**Tests**: Include lightweight automated tests for quiz logic and primary browser flows because the
+constitution requires independently testable learning loops.
 
 **Organization**: Tasks are grouped by user story to enable independent implementation and testing
 of each story.
@@ -17,17 +17,17 @@ of each story.
 
 ## Path Conventions
 
-- Rails application: `app/`, `config/`, `db/`, `test/`, `data/` at repository root
+- Static web app: `index.html`, `cards/`, `assets/css/`, `assets/js/`, `assets/data/`, `tests/`
 
 ## Phase 1: Setup (Shared Infrastructure)
 
 **Purpose**: Project initialization and base project structure
 
-- [ ] T001 Initialize Rails application skeleton and base dependencies in `Gemfile`, `config/`, and
-      `bin/`
-- [ ] T002 Configure Kamal deployment scaffolding and environment defaults in `config/deploy.yml`,
-      `.dockerignore`, and related deployment files
-- [ ] T003 [P] Add project README planning notes and local setup instructions in `README.md`
+- [ ] T001 Create static site structure and shared entry files in `index.html`, `assets/css/`,
+      `assets/js/`, and `cards/`
+- [ ] T002 Configure GitHub Pages publishing and static hosting documentation in `README.md` and
+      `.github/workflows/` if needed
+- [ ] T003 [P] Add local static-server setup instructions and project overview in `README.md`
 
 ---
 
@@ -35,16 +35,14 @@ of each story.
 
 **Purpose**: Core infrastructure that MUST be complete before ANY user story can be implemented
 
-- [ ] T004 Create content models and migrations for disposal outcomes, disposal items, and rule
-      notes in `app/models/` and `db/migrate/`
-- [ ] T005 [P] Seed at least 20 curated Berlin disposal examples in `db/seeds.rb` and
-      `data/disposal_items.yml`
-- [ ] T006 [P] Implement quiz session/progress persistence strategy in `app/controllers/concerns/`
-      or `app/services/`
-- [ ] T007 Define shared routes and layout shell for landing, quiz, and cards pages in
-      `config/routes.rb` and `app/views/layouts/`
-- [ ] T008 Add test helpers/fixtures for disposal content and quiz state in `test/fixtures/` and
-      `test/test_helper.rb`
+- [ ] T004 Create static content schema for disposal outcomes, disposal items, and rule notes in
+      `assets/data/disposal-items.json`
+- [ ] T005 [P] Seed at least 20 curated Berlin disposal examples in `assets/data/disposal-items.json`
+- [ ] T006 [P] Implement browser storage utilities for quiz/progress state in
+      `assets/js/storage.js`
+- [ ] T007 Define shared navigation, layout shell, and base styling for landing, quiz, and cards
+      pages in `index.html`, `cards/`, and `assets/css/`
+- [ ] T008 Add lightweight test fixtures or quiz-logic harness in `tests/`
 
 **Checkpoint**: Foundation ready - user story implementation can now begin in parallel
 
@@ -59,23 +57,21 @@ answer, and finish the round with a score on mobile.
 
 ### Tests for User Story 1
 
-- [ ] T009 [P] [US1] Add system test for starting and completing a quiz round in
-      `test/system/quiz_round_test.rb`
-- [ ] T010 [P] [US1] Add integration test for answer submission and feedback rendering in
-      `test/integration/quiz_answers_test.rb`
+- [ ] T009 [P] [US1] Add browser test or harness for starting and completing a quiz round in
+      `tests/quiz-round/`
+- [ ] T010 [P] [US1] Add automated coverage for answer evaluation and feedback rendering in
+      `tests/quiz-logic/`
 
 ### Implementation for User Story 1
 
-- [ ] T011 [P] [US1] Implement quiz question selection and answer evaluation service in
-      `app/services/quiz_round_builder.rb` and `app/services/quiz_answer_evaluator.rb`
-- [ ] T012 [US1] Implement quiz controller actions for start, show, and answer flows in
-      `app/controllers/quiz_controller.rb`
-- [ ] T013 [P] [US1] Build quiz views with mobile-friendly answer cards, progress bar, and score UI
-      in `app/views/quiz/`
-- [ ] T014 [P] [US1] Add small Hotwire/Stimulus enhancements for answer transitions and progress UI
-      in `app/javascript/controllers/`
-- [ ] T015 [US1] Add explanation rendering for nuanced Berlin disposal cases in
-      `app/helpers/quiz_helper.rb` and `app/views/quiz/`
+- [ ] T011 [P] [US1] Implement quiz question selection and answer evaluation logic in
+      `assets/js/quiz.js`
+- [ ] T012 [US1] Implement quiz page flow and state transitions in `index.html` and
+      `assets/js/app.js`
+- [ ] T013 [P] [US1] Build quiz UI with mobile-friendly answer cards, progress bar, and score UI in
+      `index.html` and `assets/css/`
+- [ ] T014 [US1] Add explanation rendering for nuanced Berlin disposal cases in
+      `assets/js/quiz.js` and the quiz UI templates
 
 **Checkpoint**: User Story 1 is fully functional and independently testable
 
@@ -91,16 +87,16 @@ Berlin disposal outcome without entering the quiz.
 
 ### Tests for User Story 2
 
-- [ ] T016 [P] [US2] Add system test for card browsing and item detail views in
-      `test/system/disposal_cards_test.rb`
+- [ ] T015 [P] [US2] Add lightweight browser coverage for card browsing and item detail views in
+      `tests/cards/`
 
 ### Implementation for User Story 2
 
-- [ ] T017 [US2] Implement cards controller and item detail actions in
-      `app/controllers/cards_controller.rb`
-- [ ] T018 [P] [US2] Build cards index and detail views in `app/views/cards/`
-- [ ] T019 [US2] Add reusable presentation helpers for disposal outcome badges and nuance notes in
-      `app/helpers/cards_helper.rb`
+- [ ] T016 [US2] Implement cards listing and item detail rendering in `cards/index.html`,
+      `cards/item.html`, and `assets/js/cards.js`
+- [ ] T017 [P] [US2] Build cards index and detail styling in `assets/css/`
+- [ ] T018 [US2] Add reusable rendering helpers for disposal outcome badges and nuance notes in
+      `assets/js/cards.js`
 
 **Checkpoint**: User Stories 1 and 2 both work independently
 
@@ -110,22 +106,22 @@ Berlin disposal outcome without entering the quiz.
 
 **Goal**: Preserve lightweight progress on the user’s device without accounts.
 
-**Independent Test**: A returning user can revisit the app on the same device and still see saved
+**Independent Test**: A returning user can revisit the app in the same browser and still see saved
 progress or score information.
 
 ### Tests for User Story 3
 
-- [ ] T020 [P] [US3] Add integration test for persisted progress restoration in
-      `test/integration/learning_progress_test.rb`
+- [ ] T019 [P] [US3] Add automated coverage for progress persistence and restoration in
+      `tests/storage/`
 
 ### Implementation for User Story 3
 
-- [ ] T021 [US3] Implement cookie/session-backed learning progress service in
-      `app/services/learning_progress_store.rb`
-- [ ] T022 [US3] Surface saved progress summary on landing and quiz pages in
-      `app/controllers/home_controller.rb`, `app/views/home/`, and `app/views/quiz/`
-- [ ] T023 [US3] Add reset/fresh-start handling for missing or cleared progress in
-      `app/controllers/quiz_controller.rb` and `app/views/quiz/`
+- [ ] T020 [US3] Implement cookie/localStorage-backed learning progress utilities in
+      `assets/js/storage.js`
+- [ ] T021 [US3] Surface saved progress summary on landing and quiz views in `index.html` and
+      `assets/js/app.js`
+- [ ] T022 [US3] Add reset/fresh-start handling for missing or cleared progress in
+      `assets/js/app.js` and `assets/js/storage.js`
 
 **Checkpoint**: All user stories are independently functional
 
@@ -135,12 +131,12 @@ progress or score information.
 
 **Purpose**: Improvements that affect multiple user stories
 
-- [ ] T024 [P] Review and refine English copy for Berlin expat clarity in `app/views/`,
-      `db/seeds.rb`, and `data/disposal_items.yml`
-- [ ] T025 Run responsive/mobile QA fixes across quiz and cards screens in `app/views/` and
-      `app/assets/stylesheets/`
-- [ ] T026 Validate Berlin disposal guidance sources and capture notes in
-      `specs/001-berlin-trash-quiz/research.md` and content files
+- [ ] T023 [P] Review and refine English copy for Berlin expat clarity in `index.html`, `cards/`,
+      and `assets/data/disposal-items.json`
+- [ ] T024 Run responsive/mobile QA fixes across quiz and cards screens in `assets/css/` and HTML
+      files
+- [ ] T025 Validate Berlin disposal guidance sources and capture notes in
+      `specs/001-berlin-trash-quiz/research.md` and `assets/data/disposal-items.json`
 
 ---
 
@@ -161,16 +157,16 @@ progress or score information.
 
 - **User Story 1 (P1)**: First MVP slice; no dependency on other stories
 - **User Story 2 (P2)**: Can ship after foundational work and does not block User Story 1
-- **User Story 3 (P3)**: Extends User Story 1 behavior with persistence but remains small and
-  self-contained
+- **User Story 3 (P3)**: Extends User Story 1 behavior with browser persistence but remains small
+  and self-contained
 
 ### Parallel Opportunities
 
 - T002 and T003 can proceed alongside early setup work
 - T005, T006, and T008 can proceed in parallel after the data/content shape is agreed
 - T009 and T010 can be written in parallel for User Story 1
-- T013 and T014 can proceed in parallel once controller/service contracts are set
-- T016 and T018 can proceed in parallel for the cards flow
+- T013 and T014 can proceed in parallel once quiz logic contracts are set
+- T015 and T017 can proceed in parallel for the cards flow
 
 ## Implementation Strategy
 
@@ -180,7 +176,7 @@ progress or score information.
 2. Complete Foundational phase
 3. Complete User Story 1
 4. Validate the quiz loop on mobile
-5. Demo or deploy the MVP slice
+5. Publish the MVP slice to GitHub Pages
 
 ### Incremental Delivery
 

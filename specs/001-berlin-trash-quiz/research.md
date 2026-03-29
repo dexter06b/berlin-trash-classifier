@@ -1,24 +1,24 @@
 # Research: Berlin Trash Quiz
 
-## Decision 1: Build as a conventional Rails web app with server-rendered pages
-- **Decision**: Use standard Rails controllers, views, and Hotwire enhancements rather than a
-  heavier SPA architecture.
-- **Rationale**: The MVP is content-driven, interaction-light, and benefits from Rails conventions,
-  simple rendering, and lower deployment complexity.
+## Decision 1: Build as a static GitHub Pages app with plain HTML, CSS, and JavaScript
+- **Decision**: Use a simple static web app instead of a Rails application or frontend framework.
+- **Rationale**: The MVP is content-driven, lightweight, and well suited to static hosting. This
+  reduces implementation and deployment complexity while keeping the experience fast and easy to
+  maintain.
 - **Alternatives considered**:
-  - Full SPA frontend: rejected as unnecessary complexity for an educational quiz/cards MVP.
-  - API-only backend plus separate frontend: rejected because it adds coordination overhead without
-    clear product benefit in v1.
+  - Rails web app: rejected as unnecessary infrastructure for a quiz/cards MVP.
+  - SPA framework: rejected because the interaction model is simple and does not justify extra
+    tooling.
 
-## Decision 2: Use SQLite for curated content and cookies/session for lightweight progress
-- **Decision**: Store disposal items and outcomes in app-managed data backed by SQLite, while using
-  cookies or session storage for lightweight user progress without accounts.
-- **Rationale**: This matches the small-scope MVP, keeps persistence simple, and avoids account or
-  infrastructure overhead.
+## Decision 2: Store curated content in static data files and progress in the browser
+- **Decision**: Keep disposal items and outcomes in static JSON or JavaScript data files, while
+  using cookies or localStorage for lightweight progress without accounts.
+- **Rationale**: This matches GitHub Pages deployment and keeps the product easy to update without a
+  backend.
 - **Alternatives considered**:
+  - SQLite-backed content: rejected because GitHub Pages cannot serve a dynamic database-backed app.
   - Cookie-only for all content: rejected because curated disposal content is easier to manage in
-    structured app data.
-  - External database: rejected as unnecessary for a small initial product.
+    structured static files.
 
 ## Decision 3: Treat Berlin disposal guidance as curated content with explicit nuance notes
 - **Decision**: Model disposal answers with supporting explanatory notes so edge cases such as clean
@@ -37,10 +37,11 @@
   - Item library first: rejected because it behaves more like a reference catalog than the intended
     learning-first product.
 
-## Decision 5: Keep deployment path Kamal-ready from the start
-- **Decision**: Structure environment configuration and operational assumptions around a single Rails
-  app deployed with Kamal.
-- **Rationale**: This aligns with the project request and avoids rework later.
+## Decision 5: Keep deployment path GitHub Pages-ready from the start
+- **Decision**: Structure files and runtime assumptions around a static site published through
+  GitHub Pages.
+- **Rationale**: This aligns with the revised product direction and keeps deployment essentially
+  frictionless.
 - **Alternatives considered**:
-  - Platform-specific deployment shortcuts: rejected because they obscure the intended production
-    path.
+  - Adding a backend later-first design: rejected because it would reintroduce unnecessary runtime
+    assumptions into the MVP.
