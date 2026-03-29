@@ -1,0 +1,69 @@
+.hero {
+  display: grid;
+  gap: var(--space-8);
+  margin-top: var(--space-8);
+}
+
+.hero-copy,
+.quiz-preview,
+.detail-layout,
+.mini-card {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.hero-copy h1,
+.cards-layout h1,
+.detail-layout h1 {
+  font-size: clamp(2.5rem, 7vw, 4.75rem);
+}
+
+.quiz-title {
+  text-align: center;
+  font-size: clamp(2rem, 5vw, 3.25rem);
+}
+
+.cards-layout,
+.detail-layout {
+  margin-top: var(--space-8);
+}
+
+.cards-grid {
+  flex-wrap: wrap;
+  gap: var(--space-6);
+  margin-top: var(--space-8);
+}
+
+.mini-card {
+  flex: 1 1 18rem;
+}
+
+.detail-note {
+  font-size: 1.05rem;
+}
+
+@media (min-width: 56rem) {
+  .hero {
+    grid-template-columns: 1.05fr 0.95fr;
+    align-items: start;
+  }
+}
+
+@media (max-width: 40rem) {
+  .page-shell {
+    padding-inline: var(--space-3);
+  }
+
+  .surface-panel {
+    padding: var(--space-6);
+  }
+
+  .answer-grid {
+    gap: var(--space-3);
+  }
+
+  .answer-tile {
+    min-width: calc(50% - var(--space-3));
+    min-height: 4.75rem;
+  }
+}

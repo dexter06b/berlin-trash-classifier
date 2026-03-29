@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Berlin Trash Classifier</title>
+    <meta
+      name="description"
+      content="Learn how to sort waste correctly in Berlin through a quiz-first educational experience."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/tokens.css" />
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+    <link rel="stylesheet" href="assets/css/pages.css" />
+  </head>
+  <body>
+    <div class="page-shell page-shell--home">
+      <header class="topbar topbar--home">
+        <span class="eyebrow">The Urban Alchemist</span>
+        <span class="score-pill score-pill--ghost">No account needed</span>
+      </header>
+
+      <main class="hero hero--home">
+        <section class="hero-copy surface-panel surface-panel--soft">
+          <p class="eyebrow">Berlin trash guide</p>
+          <h1>Sort waste like a local.</h1>
+          <p class="lead">
+            A premium, quiz-first learning experience for Berlin expats who want to understand paper,
+            packaging, bio waste, residual waste, and the tricky edge cases in between.
+          </p>
+          <div class="hero-actions">
+            <a class="button button--primary" href="#quiz-preview">Start quiz</a>
+            <a class="button button--secondary" href="cards/index.html">Browse cards</a>
+          </div>
+        </section>
+
+        <section id="quiz-preview" class="quiz-preview surface-panel">
+          <div class="quiz-chrome">
+            <a class="icon-button" href="/" aria-label="Go back">←</a>
+            <span class="topbar-title">TrashQuiz</span>
+            <span class="score-pill">+0 pts</span>
+          </div>
+
+          <div class="progress-meta">
+            <span>1 / 5</span>
+            <span>Warm-up round</span>
+          </div>
+          <div class="progress-track" aria-hidden="true">
+            <div class="progress-fill" style="width: 20%"></div>
+          </div>
+
+          <h2 class="quiz-title">Where should this go?</h2>
+
+          <div class="item-stage">
+            <div class="item-card">
+              <div class="item-emoji" aria-hidden="true">🍕</div>
+              <p class="item-caption">Greasy pizza box</p>
+            </div>
+          </div>
+
+          <div class="answer-grid">
+            <button class="answer-tile answer-tile--paper" type="button">Paper</button>
+            <button class="answer-tile answer-tile--packaging" type="button">Packaging</button>
+            <button class="answer-tile answer-tile--bio" type="button">Bio</button>
+            <button class="answer-tile answer-tile--residual" type="button">Residual</button>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="assets/js/app.js"></script>
+  </body>
+</html>

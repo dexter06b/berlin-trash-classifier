@@ -1,0 +1,41 @@
+:root {
+  --color-surface: #f9f6f5;
+  --color-surface-bright: #fffdfc;
+  --color-surface-container: #eae8e7;
+  --color-surface-container-low: #f1efee;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-highest: #ddd8d6;
+  --color-on-surface: #2f2f2f;
+  --color-outline-ghost: rgba(47, 47, 47, 0.15);
+
+  --color-primary: #9c3f00;
+  --color-primary-container: #ff7a2f;
+  --color-secondary: #5b8a3c;
+  --color-secondary-container: #d9ebc8;
+  --color-tertiary: #d89a00;
+  --color-tertiary-container: #ffe29b;
+  --color-paper: #dbe8ff;
+  --color-packaging: #ffe6a8;
+  --color-bio: #e1c7a8;
+  --color-residual: #d9d4d2;
+
+  --font-display: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-body: "Be Vietnam Pro", system-ui, sans-serif;
+
+  --radius-sm: 1rem;
+  --radius-md: 1.5rem;
+  --radius-lg: 2rem;
+  --radius-full: 999px;
+
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  --shadow-ambient: 0 20px 40px rgba(47, 47, 47, 0.06);
+  --glass-surface: rgba(249, 246, 245, 0.78);
+  --button-gradient: linear-gradient(135deg, var(--color-primary), var(--color-primary-container));
+}
