@@ -158,6 +158,33 @@ h2 {
   background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(234,232,231,0.9));
 }
 
+.item-visual,
+.mini-card__visual,
+.detail-visual {
+  display: grid;
+  place-items: center;
+  border-radius: 2rem;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.item-visual {
+  width: min(100%, 12rem);
+  min-height: 12rem;
+}
+
+.mini-card__visual,
+.detail-visual {
+  width: 5rem;
+  height: 5rem;
+  font-size: 2.4rem;
+}
+
+.detail-visual {
+  width: 6rem;
+  height: 6rem;
+  font-size: 3rem;
+}
+
 .item-emoji {
   font-size: clamp(4rem, 12vw, 7rem);
 }
