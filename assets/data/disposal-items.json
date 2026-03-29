@@ -1,16 +1,353 @@
-[
-  {
-    "slug": "greasy-pizza-box",
-    "name_en": "Greasy pizza box",
-    "question_prompt_en": "Where should this go?",
-    "primary_outcome": "residual",
-    "explanation_en": "If the box is greasy or contaminated with food, it usually belongs in residual waste instead of paper."
-  },
-  {
-    "slug": "yogurt-cup",
-    "name_en": "Yogurt cup",
-    "question_prompt_en": "Which bin fits this packaging item?",
-    "primary_outcome": "packaging",
-    "explanation_en": "Packaging like a cleaned yogurt cup typically belongs in the packaging stream."
-  }
-]
+{
+  "schema_version": 1,
+  "outcomes": [
+    {
+      "key": "paper",
+      "label_en": "Paper",
+      "short_description_en": "Clean paper and cardboard recycling.",
+      "special_handling": false
+    },
+    {
+      "key": "packaging",
+      "label_en": "Packaging",
+      "short_description_en": "Light packaging such as plastic, metal, and composites.",
+      "special_handling": false
+    },
+    {
+      "key": "bio",
+      "label_en": "Bio",
+      "short_description_en": "Food scraps and compostable organic waste where accepted.",
+      "special_handling": false
+    },
+    {
+      "key": "residual",
+      "label_en": "Residual",
+      "short_description_en": "General household waste that does not fit the recycling streams.",
+      "special_handling": false
+    },
+    {
+      "key": "special",
+      "label_en": "Special disposal",
+      "short_description_en": "Items that require collection points, return systems, or hazardous waste disposal.",
+      "special_handling": true
+    }
+  ],
+  "items": [
+    {
+      "slug": "greasy-pizza-box",
+      "name_en": "Greasy pizza box",
+      "image_path": null,
+      "question_prompt_en": "Where should this go?",
+      "primary_outcome": "residual",
+      "difficulty": "easy",
+      "source_note": "Verify Berlin guidance for contaminated cardboard.",
+      "active": true,
+      "explanation_en": "If the box is greasy or contaminated with food, it usually belongs in residual waste instead of paper.",
+      "rule_notes": [
+        {
+          "title_en": "If it is clean",
+          "body_en": "A clean cardboard pizza box lid or clean box can usually go into paper recycling.",
+          "condition_type": "contamination",
+          "priority": 1
+        }
+      ]
+    },
+    {
+      "slug": "clean-cardboard-box",
+      "name_en": "Clean cardboard box",
+      "image_path": null,
+      "question_prompt_en": "Which bin fits clean shipping cardboard?",
+      "primary_outcome": "paper",
+      "difficulty": "easy",
+      "source_note": "Standard paper/cardboard recycling case.",
+      "active": true,
+      "explanation_en": "Clean cardboard generally belongs in the paper bin when it is dry and free from food residue.",
+      "rule_notes": []
+    },
+    {
+      "slug": "newspaper",
+      "name_en": "Newspaper",
+      "image_path": null,
+      "question_prompt_en": "Where should this newspaper go?",
+      "primary_outcome": "paper",
+      "difficulty": "easy",
+      "source_note": "Common paper example.",
+      "active": true,
+      "explanation_en": "Newspapers typically belong in the paper recycling bin.",
+      "rule_notes": []
+    },
+    {
+      "slug": "paper-egg-carton",
+      "name_en": "Paper egg carton",
+      "image_path": null,
+      "question_prompt_en": "Where does a paper egg carton belong?",
+      "primary_outcome": "paper",
+      "difficulty": "easy",
+      "source_note": "Paper pulp packaging example.",
+      "active": true,
+      "explanation_en": "A paper egg carton usually goes into the paper bin if it is clean and dry.",
+      "rule_notes": []
+    },
+    {
+      "slug": "receipt-paper",
+      "name_en": "Thermal receipt",
+      "image_path": null,
+      "question_prompt_en": "Should a thermal receipt go into paper?",
+      "primary_outcome": "residual",
+      "difficulty": "medium",
+      "source_note": "Thermal paper often belongs in residual waste.",
+      "active": true,
+      "explanation_en": "Thermal receipts are typically not suitable for paper recycling and usually belong in residual waste.",
+      "rule_notes": []
+    },
+    {
+      "slug": "yogurt-cup",
+      "name_en": "Yogurt cup",
+      "image_path": null,
+      "question_prompt_en": "Which bin fits this packaging item?",
+      "primary_outcome": "packaging",
+      "difficulty": "easy",
+      "source_note": "Light packaging example.",
+      "active": true,
+      "explanation_en": "Packaging like a cleaned yogurt cup typically belongs in the packaging stream.",
+      "rule_notes": [
+        {
+          "title_en": "Empty is enough",
+          "body_en": "It does not need to be perfectly washed, but it should be emptied well.",
+          "condition_type": "contamination",
+          "priority": 1
+        }
+      ]
+    },
+    {
+      "slug": "plastic-bottle-no-deposit",
+      "name_en": "Plastic bottle without deposit",
+      "image_path": null,
+      "question_prompt_en": "Where should a plastic bottle without deposit go?",
+      "primary_outcome": "packaging",
+      "difficulty": "easy",
+      "source_note": "Common plastic packaging example.",
+      "active": true,
+      "explanation_en": "A plastic bottle without a deposit usually belongs in the packaging stream.",
+      "rule_notes": []
+    },
+    {
+      "slug": "tin-can",
+      "name_en": "Tin can",
+      "image_path": null,
+      "question_prompt_en": "Where should this empty tin can go?",
+      "primary_outcome": "packaging",
+      "difficulty": "easy",
+      "source_note": "Metal packaging example.",
+      "active": true,
+      "explanation_en": "An empty tin can is typically collected with packaging waste.",
+      "rule_notes": []
+    },
+    {
+      "slug": "aluminum-foil-clean",
+      "name_en": "Clean aluminum foil",
+      "image_path": null,
+      "question_prompt_en": "Where does clean aluminum foil belong?",
+      "primary_outcome": "packaging",
+      "difficulty": "medium",
+      "source_note": "Metal packaging nuance.",
+      "active": true,
+      "explanation_en": "Clean aluminum foil usually belongs in the packaging stream.",
+      "rule_notes": [
+        {
+          "title_en": "Heavily soiled foil",
+          "body_en": "If the foil is heavily contaminated with food and cannot be emptied, it may belong in residual waste.",
+          "condition_type": "contamination",
+          "priority": 1
+        }
+      ]
+    },
+    {
+      "slug": "drink-carton",
+      "name_en": "Drink carton",
+      "image_path": null,
+      "question_prompt_en": "Which bin fits a juice or milk carton?",
+      "primary_outcome": "packaging",
+      "difficulty": "easy",
+      "source_note": "Composite packaging example.",
+      "active": true,
+      "explanation_en": "Drink cartons usually belong in the packaging stream.",
+      "rule_notes": []
+    },
+    {
+      "slug": "banana-peel",
+      "name_en": "Banana peel",
+      "image_path": null,
+      "question_prompt_en": "Where should a banana peel go?",
+      "primary_outcome": "bio",
+      "difficulty": "easy",
+      "source_note": "Organic waste example.",
+      "active": true,
+      "explanation_en": "A banana peel generally belongs in the bio waste stream where bio collection is available.",
+      "rule_notes": []
+    },
+    {
+      "slug": "coffee-grounds",
+      "name_en": "Coffee grounds",
+      "image_path": null,
+      "question_prompt_en": "Where should used coffee grounds go?",
+      "primary_outcome": "bio",
+      "difficulty": "easy",
+      "source_note": "Organic kitchen waste example.",
+      "active": true,
+      "explanation_en": "Used coffee grounds usually belong in bio waste.",
+      "rule_notes": []
+    },
+    {
+      "slug": "tea-bag",
+      "name_en": "Tea bag",
+      "image_path": null,
+      "question_prompt_en": "Where should a used tea bag go?",
+      "primary_outcome": "bio",
+      "difficulty": "medium",
+      "source_note": "Check whether non-paper staples or synthetic mesh matter.",
+      "active": true,
+      "explanation_en": "A typical used tea bag often belongs in bio waste, though unusual materials may need checking.",
+      "rule_notes": []
+    },
+    {
+      "slug": "cut-flowers",
+      "name_en": "Cut flowers",
+      "image_path": null,
+      "question_prompt_en": "Where should wilted flowers go?",
+      "primary_outcome": "bio",
+      "difficulty": "easy",
+      "source_note": "Garden/organic example.",
+      "active": true,
+      "explanation_en": "Wilted flowers usually belong in bio waste.",
+      "rule_notes": []
+    },
+    {
+      "slug": "bread-roll",
+      "name_en": "Stale bread roll",
+      "image_path": null,
+      "question_prompt_en": "Where should stale bread go?",
+      "primary_outcome": "bio",
+      "difficulty": "easy",
+      "source_note": "Food waste example.",
+      "active": true,
+      "explanation_en": "Old bread generally belongs in bio waste.",
+      "rule_notes": []
+    },
+    {
+      "slug": "broken-ceramic-mug",
+      "name_en": "Broken ceramic mug",
+      "image_path": null,
+      "question_prompt_en": "Where should broken ceramic go?",
+      "primary_outcome": "residual",
+      "difficulty": "medium",
+      "source_note": "Ceramics should not be placed in glass recycling.",
+      "active": true,
+      "explanation_en": "Broken ceramics usually belong in residual waste, not in the glass container.",
+      "rule_notes": []
+    },
+    {
+      "slug": "vacuum-dust",
+      "name_en": "Vacuum cleaner dust",
+      "image_path": null,
+      "question_prompt_en": "Where should vacuum dust go?",
+      "primary_outcome": "residual",
+      "difficulty": "easy",
+      "source_note": "Common residual waste example.",
+      "active": true,
+      "explanation_en": "Vacuum dust is generally residual waste.",
+      "rule_notes": []
+    },
+    {
+      "slug": "used-tissue",
+      "name_en": "Used tissue",
+      "image_path": null,
+      "question_prompt_en": "Where should a used tissue go?",
+      "primary_outcome": "residual",
+      "difficulty": "easy",
+      "source_note": "Hygiene paper is commonly residual waste.",
+      "active": true,
+      "explanation_en": "Used tissues typically belong in residual waste rather than paper recycling.",
+      "rule_notes": []
+    },
+    {
+      "slug": "cold-ash",
+      "name_en": "Cold ash",
+      "image_path": null,
+      "question_prompt_en": "Where should cold ash go?",
+      "primary_outcome": "residual",
+      "difficulty": "medium",
+      "source_note": "Confirm safety note for fully cooled ash.",
+      "active": true,
+      "explanation_en": "Fully cold ash usually belongs in residual waste.",
+      "rule_notes": [
+        {
+          "title_en": "Only when fully cold",
+          "body_en": "Ash must be completely cold before disposal to avoid fire risk.",
+          "condition_type": "safety",
+          "priority": 1
+        }
+      ]
+    },
+    {
+      "slug": "glass-bottle-deposit",
+      "name_en": "Deposit glass bottle",
+      "image_path": null,
+      "question_prompt_en": "What should you do with a deposit bottle?",
+      "primary_outcome": "special",
+      "difficulty": "medium",
+      "source_note": "Deposit systems are separate from standard glass collection.",
+      "active": true,
+      "explanation_en": "A deposit bottle should usually be returned through the deposit system rather than put into a recycling bin.",
+      "rule_notes": []
+    },
+    {
+      "slug": "battery",
+      "name_en": "Household battery",
+      "image_path": null,
+      "question_prompt_en": "Where should a used battery go?",
+      "primary_outcome": "special",
+      "difficulty": "easy",
+      "source_note": "Hazardous/special collection item.",
+      "active": true,
+      "explanation_en": "Batteries require special collection and should not go into household bins.",
+      "rule_notes": []
+    },
+    {
+      "slug": "light-bulb-led",
+      "name_en": "LED light bulb",
+      "image_path": null,
+      "question_prompt_en": "Where should an LED light bulb go?",
+      "primary_outcome": "special",
+      "difficulty": "medium",
+      "source_note": "Electrical item collection point.",
+      "active": true,
+      "explanation_en": "LED bulbs usually need special collection rather than household bins.",
+      "rule_notes": []
+    },
+    {
+      "slug": "paint-can-with-residue",
+      "name_en": "Paint can with residue",
+      "image_path": null,
+      "question_prompt_en": "Where should leftover paint be disposed of?",
+      "primary_outcome": "special",
+      "difficulty": "hard",
+      "source_note": "Hazardous/special waste example.",
+      "active": true,
+      "explanation_en": "A paint can with leftover paint usually requires special disposal, not household bins.",
+      "rule_notes": []
+    },
+    {
+      "slug": "electronics-cable",
+      "name_en": "Old charging cable",
+      "image_path": null,
+      "question_prompt_en": "Where should an old charging cable go?",
+      "primary_outcome": "special",
+      "difficulty": "medium",
+      "source_note": "Electrical waste example.",
+      "active": true,
+      "explanation_en": "Old cables typically belong in special electronic waste collection.",
+      "rule_notes": []
+    }
+  ]
+}
