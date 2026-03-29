@@ -1,4 +1,4 @@
-const ROUND_SIZE = 5;
+const ROUND_SIZE = 10;
 const ANSWER_KEYS = ["paper", "packaging", "bio", "residual"];
 
 function createInitialProgress(progress) {

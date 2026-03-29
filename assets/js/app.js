@@ -16,12 +16,31 @@ const ANSWER_TILE_CLASS = {
   residual: "answer-tile--residual"
 };
 
-const ITEM_EMOJI_BY_OUTCOME = {
-  paper: "📦",
-  packaging: "🥤",
-  bio: "🍌",
-  residual: "🧻",
-  special: "🔋"
+const ITEM_EMOJI_BY_SLUG = {
+  "greasy-pizza-box": "🍕",
+  "clean-cardboard-box": "📦",
+  newspaper: "📰",
+  "paper-egg-carton": "🥚",
+  "receipt-paper": "🧾",
+  "yogurt-cup": "🥛",
+  "plastic-bottle-no-deposit": "🧴",
+  "tin-can": "🥫",
+  "aluminum-foil-clean": "✨",
+  "drink-carton": "🧃",
+  "banana-peel": "🍌",
+  "coffee-grounds": "☕",
+  "tea-bag": "🫖",
+  "cut-flowers": "💐",
+  "bread-roll": "🥖",
+  "broken-ceramic-mug": "☕",
+  "vacuum-dust": "🧹",
+  "used-tissue": "🤧",
+  "cold-ash": "🔥",
+  "glass-bottle-deposit": "🍾",
+  battery: "🔋",
+  "light-bulb-led": "💡",
+  "paint-can-with-residue": "🎨",
+  "electronics-cable": "🔌"
 };
 
 function escapeHtml(value) {
@@ -38,7 +57,7 @@ function getOutcomeBadgeClass(outcomeKey) {
 }
 
 function getItemEmoji(item) {
-  return ITEM_EMOJI_BY_OUTCOME[item.primary_outcome] || "🗑️";
+  return ITEM_EMOJI_BY_SLUG[item.slug] || "🗑️";
 }
 
 function updateSummary(state) {
