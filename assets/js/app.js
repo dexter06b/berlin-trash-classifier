@@ -16,6 +16,14 @@ const ANSWER_TILE_CLASS = {
   residual: "answer-tile--residual"
 };
 
+const ITEM_EMOJI_BY_OUTCOME = {
+  paper: "📦",
+  packaging: "🥤",
+  bio: "🍌",
+  residual: "🧻",
+  special: "🔋"
+};
+
 function escapeHtml(value) {
   return String(value)
     .replaceAll("&", "&amp;")
@@ -25,9 +33,17 @@ function escapeHtml(value) {
     .replaceAll("'", "&#39;");
 }
 
+function getOutcomeBadgeClass(outcomeKey) {
+  return ANSWER_TILE_CLASS[outcomeKey]?.replace("answer-tile", "badge") || "badge--residual";
+}
+
+function getItemEmoji(item) {
+  return ITEM_EMOJI_BY_OUTCOME[item.primary_outcome] || "🗑️";
+}
+
 function updateSummary(state) {
   document.querySelector("#progress-summary").textContent = `${state.progress.roundsCompleted} rounds · ${state.progress.correctAnswers} correct`;
-  document.querySelector("#score-pill").textContent = `+${state.roundCorrect * 10} pts`;
+  document.querySelector("#score-pill").textContent = `Points ${state.roundCorrect * 10}`;
 }
 
 function renderCompleteState(state) {
@@ -35,7 +51,9 @@ function renderCompleteState(state) {
   document.querySelector("#round-label").textContent = "Round complete";
   document.querySelector("#progress-fill").style.width = "100%";
   document.querySelector("#quiz-title").textContent = `Round complete — ${state.roundCorrect}/${state.items.length}`;
-  document.querySelector("#item-caption").textContent = "Nice. You can replay by refreshing or jump into the next implementation issue.";
+  document.querySelector("#item-emoji").textContent = "🏁";
+  document.querySelector("#item-caption").textContent = "Nice. You can replay by refreshing or move on to the next issue.";
+  document.querySelector("#item-hint").textContent = "You just completed the current learning round.";
   document.querySelector("#answer-grid").innerHTML = '<a class="button button--primary" href="#quiz-preview">Great job</a>';
 
   const panel = document.querySelector("#feedback-panel");
@@ -54,11 +72,13 @@ function renderQuestion(state, catalog) {
   if (!item) return;
 
   const currentNumber = state.currentIndex + 1;
-  document.querySelector("#question-counter").textContent = `${currentNumber} / ${state.items.length}`;
-  document.querySelector("#round-label").textContent = state.answered ? "Answer reviewed" : "Choose one answer";
+  document.querySelector("#question-counter").textContent = `Question ${currentNumber} of ${state.items.length}`;
+  document.querySelector("#round-label").textContent = state.answered ? "Answer reviewed" : `${Math.round(getProgressPercent(state))}% complete`;
   document.querySelector("#progress-fill").style.width = `${getProgressPercent(state)}%`;
   document.querySelector("#quiz-title").textContent = item.question_prompt_en;
+  document.querySelector("#item-emoji").textContent = getItemEmoji(item);
   document.querySelector("#item-caption").textContent = item.name_en;
+  document.querySelector("#item-hint").textContent = item.source_note || "Choose the best Berlin disposal path.";
   updateSummary(state);
 
   const answerGrid = document.querySelector("#answer-grid");
@@ -70,7 +90,8 @@ function renderQuestion(state, catalog) {
       .map(
         (option) => `
           <button class="answer-tile ${ANSWER_TILE_CLASS[option.key] ?? ""}" type="button" data-outcome-key="${option.key}">
-            ${escapeHtml(option.label_en)}
+            <span class="answer-tile__label">${escapeHtml(option.label_en)}</span>
+            <span class="answer-tile__hint">${escapeHtml(option.short_description_en)}</span>
           </button>
         `
       )
@@ -92,7 +113,7 @@ function renderQuestion(state, catalog) {
   const outcome = catalog.outcomes.find((entry) => entry.key === item.primary_outcome);
   const correct = item.primary_outcome === state.selectedOutcome;
 
-  answerGrid.innerHTML = '<button id="next-question" class="button button--primary" type="button">Next</button>';
+  answerGrid.innerHTML = '<button id="next-question" class="button button--primary" type="button">Next question</button>';
   document.querySelector("#next-question").addEventListener("click", () => {
     advanceQuiz(state);
     writeProgress(state.progress);
@@ -104,7 +125,7 @@ function renderQuestion(state, catalog) {
   feedbackPanel.innerHTML = `
     <strong>${correct ? "Correct!" : "Not quite"}</strong>
     <p>${escapeHtml(item.explanation_en)}</p>
-    <p><span class="badge ${correct ? ANSWER_TILE_CLASS[item.primary_outcome]?.replace("answer-tile", "badge") || "badge--residual" : "badge--residual"}">${escapeHtml(outcome?.label_en || item.primary_outcome)}</span></p>
+    <p><span class="badge ${getOutcomeBadgeClass(item.primary_outcome)}">${escapeHtml(outcome?.label_en || item.primary_outcome)}</span></p>
   `;
 }
 
@@ -116,6 +137,7 @@ async function init() {
   if (state.status === "empty") {
     document.querySelector("#quiz-title").textContent = "No quiz items available yet";
     document.querySelector("#item-caption").textContent = "Add more active disposal items to start the quiz.";
+    document.querySelector("#item-hint").textContent = "The quiz shell is ready for more content.";
     document.querySelector("#answer-grid").innerHTML = "";
     return;
   }
