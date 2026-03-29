@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cards · Berlin Trash Classifier</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/css/tokens.css" />
+    <link rel="stylesheet" href="../assets/css/base.css" />
+    <link rel="stylesheet" href="../assets/css/components.css" />
+    <link rel="stylesheet" href="../assets/css/pages.css" />
+  </head>
+  <body>
+    <div class="page-shell page-shell--cards">
+      <header class="topbar">
+        <a class="icon-button" href="../index.html" aria-label="Back to home">←</a>
+        <span class="topbar-title">Cards</span>
+        <span class="score-pill score-pill--ghost">Preview</span>
+      </header>
+
+      <main class="cards-layout">
+        <section class="surface-panel surface-panel--soft">
+          <p class="eyebrow">Reference mode</p>
+          <h1>Browse disposal cards</h1>
+          <p class="lead">This is the future browse-first companion view for the quiz experience.</p>
+        </section>
+
+        <section class="cards-grid">
+          <article class="mini-card surface-panel">
+            <span class="badge badge--paper">Paper</span>
+            <h2>Pizza box</h2>
+            <p>Check contamination first before choosing the correct disposal path.</p>
+            <a class="button button--tertiary" href="item.html">Open card</a>
+          </article>
+
+          <article class="mini-card surface-panel">
+            <span class="badge badge--packaging">Packaging</span>
+            <h2>Yogurt cup</h2>
+            <p>Packaging items will later be backed by the curated static data file.</p>
+            <a class="button button--tertiary" href="item.html">Open card</a>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="../assets/js/cards.js"></script>
+  </body>
+</html>
