@@ -23,7 +23,7 @@
     <div class="page-shell page-shell--home">
       <header class="topbar topbar--home">
         <span class="eyebrow">The Urban Alchemist</span>
-        <span class="score-pill score-pill--ghost">No account needed</span>
+        <span id="progress-summary" class="score-pill score-pill--ghost">No account needed</span>
       </header>
 
       <main class="hero hero--home">
@@ -42,34 +42,30 @@
 
         <section id="quiz-preview" class="quiz-preview surface-panel">
           <div class="quiz-chrome">
-            <a class="icon-button" href="/" aria-label="Go back">←</a>
+            <a class="icon-button" href="./" aria-label="Go back">←</a>
             <span class="topbar-title">TrashQuiz</span>
-            <span class="score-pill">+0 pts</span>
+            <span id="score-pill" class="score-pill">+0 pts</span>
           </div>
 
           <div class="progress-meta">
-            <span>1 / 5</span>
-            <span>Warm-up round</span>
+            <span id="question-counter">1 / 5</span>
+            <span id="round-label">Warm-up round</span>
           </div>
           <div class="progress-track" aria-hidden="true">
-            <div class="progress-fill" style="width: 20%"></div>
+            <div id="progress-fill" class="progress-fill" style="width: 20%"></div>
           </div>
 
-          <h2 class="quiz-title">Where should this go?</h2>
+          <h2 id="quiz-title" class="quiz-title">Where should this go?</h2>
 
           <div class="item-stage">
             <div class="item-card">
-              <div class="item-emoji" aria-hidden="true">🍕</div>
-              <p class="item-caption">Greasy pizza box</p>
+              <div class="item-emoji" aria-hidden="true">🗑️</div>
+              <p id="item-caption" class="item-caption">Loading quiz item…</p>
             </div>
           </div>
 
-          <div class="answer-grid">
-            <button class="answer-tile answer-tile--paper" type="button">Paper</button>
-            <button class="answer-tile answer-tile--packaging" type="button">Packaging</button>
-            <button class="answer-tile answer-tile--bio" type="button">Bio</button>
-            <button class="answer-tile answer-tile--residual" type="button">Residual</button>
-          </div>
+          <div id="answer-grid" class="answer-grid"></div>
+          <div id="feedback-panel" class="feedback-panel" hidden></div>
         </section>
       </main>
     </div>
