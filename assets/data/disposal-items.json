@@ -1,0 +1,16 @@
+[
+  {
+    "slug": "greasy-pizza-box",
+    "name_en": "Greasy pizza box",
+    "question_prompt_en": "Where should this go?",
+    "primary_outcome": "residual",
+    "explanation_en": "If the box is greasy or contaminated with food, it usually belongs in residual waste instead of paper."
+  },
+  {
+    "slug": "yogurt-cup",
+    "name_en": "Yogurt cup",
+    "question_prompt_en": "Which bin fits this packaging item?",
+    "primary_outcome": "packaging",
+    "explanation_en": "Packaging like a cleaned yogurt cup typically belongs in the packaging stream."
+  }
+]
